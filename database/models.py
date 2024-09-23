@@ -41,13 +41,13 @@ class BookPhoto(Base):
 
     book_fk = relationship("Book", lazy="subquery")
 
-# class BookFile(Base):
-#     __tablename__ = "file"
-#     id = Column(Integer, primary_key=True, autoincrement=True)
-#     book_id = Column(Integer, ForeignKey("book.id"))
-#     file_path = Column(String, nullable=False)
-#
-#     book_fk = relationship("Book", lazy="subquery")
+class BookFile(Base):
+    __tablename__ = "file"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    book_id = Column(Integer, ForeignKey("book.id"))
+    file_path = Column(String, nullable=False)
+
+    book_fk = relationship("Book", lazy="subquery")
 
 
 

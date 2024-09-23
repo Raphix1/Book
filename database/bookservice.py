@@ -65,10 +65,9 @@ def add_genre_db(genre_name):
         db.commit()
         return new_genre.id
 
-def get_all_books_by_genre_db(size, genre_name):
+def get_all_books_by_genre_db(genre_name):
     with next(get_db()) as db:
-        exact_genre = db.query(Genre).filter_by(genre_name=genre_name).first()
-        if exact_genre:
-            exact_books = db.query(Book).filter_by(genre=genre_name).limit(size).all()
-            return exact_books
+        exact_book = db.query(Book).filter_by(genre=genre_name).all()
+        if exact_book:
+            return exact_book
         return False

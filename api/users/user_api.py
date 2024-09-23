@@ -19,8 +19,6 @@ class User(BaseModel):
     phone_number: str
     email: str
     password: str
-    birthday: str
-    user_city: str
 
 @user_router.post("/register_user")
 async def register_user_api(user_data: User):
@@ -46,7 +44,7 @@ async def change_profile_api(user_id: int, change_info: str, new_info: str):
     result = change_user_db(user_id, change_info, new_info)
     return result_message(result)
 
-@user_router.delete("delete_profile")
+@user_router.delete("/delete_profile")
 async def delete_profile_api(user_id: int):
     result = delete_user_db(user_id)
     return result_message(result)
